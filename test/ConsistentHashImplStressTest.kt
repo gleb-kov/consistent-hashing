@@ -19,15 +19,15 @@ class ConsistentHashImplStressTest {
                     when (curTest) {
                         is AddShardRequest -> {
                             val result = cHash.addShard(curTest.newShard, curTest.vnodeHashes)
-                            assertEquals(result, curTest.result.toMap())
+                            assertEquals(curTest.result.toMap(), result)
                         }
                         is RemoveShardRequest -> {
                             val result = cHash.removeShard(curTest.shard)
-                            assertEquals(result, curTest.result.toMap())
+                            assertEquals(curTest.result.toMap(), result)
                         }
                         is GetShardByKeyRequest -> {
                             val result = cHash.getShardByKey(curTest.key)
-                            assertEquals(result, curTest.result)
+                            assertEquals(curTest.result, result)
                         }
                     }
                 }
